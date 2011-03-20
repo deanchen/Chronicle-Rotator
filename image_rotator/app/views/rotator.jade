@@ -3,28 +3,27 @@ html(lang="en")
 	head
 		title Container Demo
 		link(rel='stylesheet', href='reset.css')
-		link(rel='stylesheet', href='reference.css')
+		link(rel='stylesheet', href='styles.css')
 		script(src='jquery.js')
 		script(src='rotator.js')
 	.body
 		#main.container
 			.main_image
-				img(src="images/banner1.jpg", alt="- banner1") 
+				img(src=elements[0].imageUrl, alt="- banner1") 
 				.desc
 					a.collapse(href="#", class="collapse") Close Me! 
 					.block
-						h2 Slowing Down
-						small 04/10/09
+						h2 #{elements[0].headline}
+						small #{elements[0].date}
 						
-						p Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones 
-	
+						p!= elements[0].caption
 			.image_thumb
-				ul 
-					li 
-						a(href="images/banner1.jpg")
-							img(src="banner1_thumb.jpg", alt="Slowing Dow") 
-						.block
-							h2 Slowing Down
-							small 04/10/09
-							
-							p Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones 
+				ul 		
+					- each element in elements
+						li
+							a(href=element.imageUrl)
+							.block
+								h2 #{element.headline}
+								small #{element.date}
+								
+								p!= element.caption
