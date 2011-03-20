@@ -1,6 +1,16 @@
 corner-radius = 6px
 shadow = rgba(0, 0, 0, 0.3) 0px 1px 3px
 
+border-radius(corner-radius)
+	-webkit-border-radius corner-radius
+	-moz-border-radius corner-radius
+	-o-border-radius corner-radius
+	-khtml-border-radius corner-radius
+	border-top-left-radius corner-radius corner-radius
+	border-top-right-radius corner-radius corner-radius
+	border-bottom-right-radius corner-radius corner-radius
+	border-bottom-left-radius corner-radius corner-radius
+
 body
 	background-color #F5F6F7
 	padding 30px
@@ -19,16 +29,7 @@ body
 	
 
 	.rounded
-		border-radius corner-radius
-		-webkit-border-radius corner-radius
-		-moz-border-radius corner-radius
-		-o-border-radius corner-radius
-		-khtml-border-radius corner-radius
-		border-top-left-radius corner-radius corner-radius
-		border-top-right-radius corner-radius corner-radius
-		border-bottom-right-radius corner-radius corner-radius
-		border-bottom-left-radius corner-radius corner-radius
-		
+		border-radius(4px)
 		border 1px solid
 		
 		-webkit-box-shadow shadow
