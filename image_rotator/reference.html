@@ -1,0 +1,258 @@
+<!-- 
+	http://www.sohtanaka.com/web-design/examples/image-rotator/#
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<title>Image Rotator w/ Teaser - CSS &amp; jQuery Tutorial</title> 
+<style type="text/css"> 
+body {
+	background: #1d1d1d;
+	margin: 0; padding: 0;
+	font: 10px normal Arial, Helvetica, sans-serif;
+}
+* {margin: 0; padding: 0; outline: none;}
+img {border: none;}
+h1 {
+	font: 3em normal Georgia, "Times New Roman", Times, serif;
+	color: #fff;
+	text-align: center;
+	background: url(h1_bg.gif) no-repeat;
+	text-indent: -99999px;
+	margin: 100px 0 10px;
+}
+.container {
+	overflow: hidden;
+	width: 900px;
+	margin: 0 auto;
+}
+#main {
+	padding: 10px;
+	background: #f0f0f0;
+	border: 1px solid #ccc;
+}
+a {color: #fff;}
+ 
+/*--Main Image Preview--*/
+.main_image {
+	width: 598px; height: 456px;
+	float: left;
+	background: #333;
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+}
+.main_image h2 {
+	font-size: 2em;
+	font-weight: normal;
+	margin: 0 0 5px;	padding: 10px;
+}
+.main_image p {
+	font-size: 1.2em;
+	padding: 10px;	margin: 0;
+	line-height: 1.6em;
+}
+.block small { 
+	padding: 0 0 0 20px; 
+	background: url(icon_calendar.gif) no-repeat 0 center; 
+	font-size: 1em; 
+}
+.main_image .block small {margin-left: 10px;}
+.main_image .desc{
+	position: absolute;
+	bottom: 0;	left: 0;
+	width: 100%;
+	display: none;
+}
+.main_image .block{
+	width: 100%;
+	background: #111;
+	border-top: 1px solid #000;
+}
+.main_image a.collapse {
+	background: url(images/btn_collapse.gif) no-repeat left top;
+	height: 27px; width: 93px;
+	text-indent: -99999px;
+	position: absolute; 
+	top: -27px; right: 20px; 
+}
+.main_image a.show {background-position: left bottom;} 
+ 
+ 
+.image_thumb {
+	float: left;
+	width: 299px;
+	background: #f0f0f0;
+	border-right: 1px solid #fff;
+	border-top: 1px solid #ccc;
+}
+.image_thumb img {
+	border: 1px solid #ccc; 
+	padding: 5px; 
+	background: #fff; 
+	float: left;
+}
+.image_thumb ul {
+	margin: 0; padding: 0;
+	list-style: none;
+}
+.image_thumb ul li{
+	margin: 0; padding: 12px 10px;
+	background: #f0f0f0 url(nav_a.gif) repeat-x;
+	width: 279px;
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #ccc;
+}
+.image_thumb ul li.hover {
+	background: #ddd;
+	cursor: pointer;
+}
+.image_thumb ul li.active {
+	background: #fff;
+	cursor: default;
+}
+html .image_thumb ul li h2 {
+	font-size: 1.5em; 
+	margin: 5px 0; padding: 0;
+}
+.image_thumb ul li .block {
+	float: left; 
+	margin-left: 10px;
+	padding: 0;
+	width: 170px;
+}	
+.image_thumb ul li p{display: none;}
+ 
+ 
+ 
+</style> 
+<!--Call jQuery--> 
+<script type="text/javascript" src="../jquery.js"></script> 
+<script type="text/javascript"> 
+$(document).ready(function() {	
+ 
+	//Show Banner
+	$(".main_image .desc").show(); //Show Banner
+	$(".main_image .block").animate({ opacity: 0.85 }, 1 ); //Set Opacity
+ 
+	//Click and Hover events for thumbnail list
+	$(".image_thumb ul li:first").addClass('active'); 
+	$(".image_thumb ul li").click(function(){ 
+		//Set Variables
+		var imgAlt = $(this).find('img').attr("alt"); //Get Alt Tag of Image
+		var imgTitle = $(this).find('a').attr("href"); //Get Main Image URL
+		var imgDesc = $(this).find('.block').html(); 	//Get HTML of block
+		var imgDescHeight = $(".main_image").find('.block').height();	//Calculate height of block	
+		
+		if ($(this).is(".active")) {  //If it's already active, then...
+			return false; // Don't click through
+		} else {
+			//Animate the Teaser				
+			$(".main_image .block").animate({ opacity: 0, marginBottom: -imgDescHeight }, 250 , function() {
+				$(".main_image .block").html(imgDesc).animate({ opacity: 0.85,	marginBottom: "0" }, 250 );
+				$(".main_image img").attr({ src: imgTitle , alt: imgAlt});
+			});
+		}
+		
+		$(".image_thumb ul li").removeClass('active'); //Remove class of 'active' on all lists
+		$(this).addClass('active');  //add class of 'active' on this list only
+		return false;
+		
+	}) .hover(function(){
+		$(this).addClass('hover');
+		}, function() {
+		$(this).removeClass('hover');
+	});
+			
+	//Toggle Teaser
+	$("a.collapse").click(function(){
+		$(".main_image .block").slideToggle();
+		$("a.collapse").toggleClass("show");
+	});
+	
+});//Close Function
+</script> 
+</head> 
+ 
+<body> 
+<div class="container"> 
+	<h1>Image Gallery w/ Teaser - CSS &amp; jQuery Tutorial<small>by Soh Tanaka</small></h1> 
+</div> 
+<div id="main" class="container"> 
+	<div class="main_image"> 
+		<img src="images/banner1.jpg" alt="- banner1" /> 
+		<div class="desc"> 
+			<a href="#" class="collapse">Close Me!</a> 
+			<div class="block"> 
+				<h2>Slowing Down</h2> 
+				<small>04/10/09</small> 
+				
+				<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones</a> </p> 
+			</div> 
+		</div> 
+	</div> 
+	<div class="image_thumb"> 
+		<ul> 
+			<li> 
+				<a href="images/banner1.jpg"><img src="banner1_thumb.jpg" alt="Slowing Dow" /></a> 
+				<div class="block"> 
+					<h2>Slowing Down</h2> 
+					<small>04/10/09</small> 
+					
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/slowingdown.html" target="_blank">Artwork By Glenn Jones</a> </p> 
+				</div> 
+			</li> 
+			<li> 
+				<a href="images/banner2.jpg"><img src="banner2_thumb.jpg" alt="Organized Food Fight" /></a> 
+				<div class="block"> 
+					<h2>Organized Food Fight</h2> 
+					<small>04/11/09</small> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et. Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.</p> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/orfofi.html" target="_blank">Artwork By Glenn Jones</a></p> 
+				</div> 
+			</li> 
+			<li> 
+				<a href="images/banner3.jpg"><img src="banner3_thumb.jpg" alt="Endangered Species" /></a> 
+				<div class="block"> 
+					<h2>Endangered Species</h2> 
+					<small>04/12/09</small> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/ensp.html" target="_blank">Artwork By Glenn Jones</a></p> 
+				</div> 
+			</li> 
+			<li> 
+				<a href="images/banner4.jpg"><img src="banner4_thumb.jpg" alt="Evolution" /></a> 
+				<div class="block"> 
+					<h2>Evolution</h2> 
+					<small>04/13/09</small> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et. Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et.<br /><a href="http://store.glennz.com/evolution.html" target="_blank">Artwork By Glenn Jones</a></p> 
+				</div> 
+			</li> 
+			<li> 
+				<a href="images/banner5.jpg"><img src="banner5_thumb.jpg" alt="Puzzled Putter" /></a> 
+				<div class="block"> 
+					<h2>Puzzled Putter</h2> 
+					<small>04/14/09</small> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem. Neo nostrud letatio aliquam validus eum quadrum, volutpat et. <br /><a href="http://store.glennz.com/puzzledputter.html" target="_blank">Artwork By Glenn Jones</a></p> 
+				</div> 
+			</li> 
+			<li> 
+				<a href="images/banner6.jpg"><img src="banner6_thumb.jpg" alt="Secret Habit" /></a> 
+				<div class="block"> 
+					<h2>Secret Habit</h2> 
+					<small>04/15/09</small> 
+					<p>Autem conventio nimis quis ad, nisl secundum sed, facilisi, vicis augue regula, ratis, autem.<br /><a href="http://store.glennz.com/secrethabit1.html" target="_blank">Artwork By Glenn Jones</a></p> 
+				</div> 
+			</li> 
+		</ul> 
+	</div> 
+</div> 
+<div class="container"> 
+	<p style="color: #fff; font-size: 1.2em; padding: 10px 0; float: right;">Tutorial by <a href="http://www.SohTanaka.com" target="_blank" style="color: #fff;">Soh Tanaka</a> - <a href="http://www.SohTanaka.com" target="_blank" style="color: #fff;">www.SohTanaka.com</a></p> 
+</div> 
+ 
+ 
+</body> 
+</html> 
