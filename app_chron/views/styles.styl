@@ -1,5 +1,5 @@
 body
-	background #1d1d1d
+	background #F5F6F7
 	margin 0 padding 0
 	font 10px normal Arial, Helvetica, sans-serif
 
@@ -79,17 +79,11 @@ a
 
 .image_thumb
 	float left
-	width 299px
-	background #f0f0f0
-	border-right 1px solid #fff
-	border-top 1px solid #ccc
-
-	img
-		border 1px solid #ccc 
-		padding 5px 
-		background #fff 
-		float left
-
+	width 200px
+	position absolute
+	
+	background transparent
+	
 	ul
 		margin 0 padding 0
 		list-style none
@@ -97,24 +91,32 @@ a
 		li
 			margin 0
 			padding 12px 10px
-			background #f0f0f0 url(nav_a.gif) repeat-x
-			width 279px
-			float left
-			border-bottom 1px solid #ccc
-			border-top 1px solid #fff
-			border-right 1px solid #ccc
-
+			background #000 url(nav_a.gif) repeat-x
+			width 180px
+		
+		li.even
+			opacity: 0.35
+		
+		li.odd
+			opacity: 0.3
+		
 		li.hover
-			background #ddd
+			background #000
+			opacity: 0.5;
 			cursor pointer
 
 		li.active
-			background #fff
+			background #000
+			opacity: 0.5;
 			cursor default
+		
+	
 
 html .image_thumb ul li h2
 	font-size 1.5em 
-	margin 5px 0 padding 0
+	margin 5px 0 
+	padding 0
+	opacity: 1
 
 .image_thumb 
 	ul li 

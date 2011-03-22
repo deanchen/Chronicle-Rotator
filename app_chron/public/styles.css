@@ -1,4 +1,4 @@
-body{background:#1d1d1d;margin:0 padding 0;font:10px normal Arial,Helvetica,sans-serif}
+body{background:#f5f6f7;margin:0 padding 0;font:10px normal Arial,Helvetica,sans-serif}
 *{margin:0 padding 0 outline none}
 img{border:none}
 h1{font:3em normal Georgia,"Times New Roman",Times,serif;color:#fff;text-align:center;background:url("h1_bg.gif") no-repeat;text-indent:-99999px;margin:100px 0 10px}
@@ -14,12 +14,13 @@ a{color:#fff}
 .main_image a.collapse{background:url("images/btn_collapse.gif") no-repeat left top;height:27px;width:93px;text-indent:-99999px;position:absolute;top:-27px;right:20px}
 .main_image a.show{background-position:left bottom}
 .block small{padding:0 0 0 20px;background:url("icon_calendar.gif") no-repeat 0 center;font-size:1em}
-.image_thumb{float:left;width:299px;background:#f0f0f0;border-right:1px solid #fff;border-top:1px solid #ccc;}
-.image_thumb img{border:1px solid #ccc;padding:5px;background:#fff;float:left}
+.image_thumb{float:left;width:200px;position:absolute;background:transparent;}
 .image_thumb ul{margin:0 padding 0;list-style:none;}
-.image_thumb ul li{margin:0;padding:12px 10px;background:#f0f0f0 url("nav_a.gif") repeat-x;width:279px;float:left;border-bottom:1px solid #ccc;border-top:1px solid #fff;border-right:1px solid #ccc}
-.image_thumb ul li.hover{background:#ddd;cursor:pointer}
-.image_thumb ul li.active{background:#fff;cursor:default}
-html .image_thumb ul li h2{font-size:1.5em;margin:5px 0 padding 0}
+.image_thumb ul li{margin:0;padding:12px 10px;background:#000 url("nav_a.gif") repeat-x;width:180px}
+.image_thumb ul li.even{opacity:.35}
+.image_thumb ul li.odd{opacity:.3}
+.image_thumb ul li.hover{background:#000;opacity:.5;cursor:pointer}
+.image_thumb ul li.active{background:#000;opacity:.5;cursor:default}
+html .image_thumb ul li h2{font-size:1.5em;margin:5px 0;padding:0;opacity:1}
 .image_thumb ul li .block{float:left;margin-left:10px;padding:0;width:170px}
 .image_thumb ul li p{display:none}

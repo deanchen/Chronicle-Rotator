@@ -1,0 +1,17 @@
+#main.container
+	.main_image
+		.image_thumb
+			ul 		
+				- each element in elements
+					li(class=element.alternate)
+						a(href=element.imageUrl)
+						.content
+							h2 #{element.headline}
+							p!= element.caption
+		img(src=elements[0].imageUrl, alt="- banner1") 
+		.desc
+			a.collapse(href="#", class="collapse") Close Me! 
+			.block
+				h2 #{elements[0].headline}
+				p!= elements[0].caption
+
