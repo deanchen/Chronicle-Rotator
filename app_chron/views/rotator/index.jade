@@ -4,11 +4,11 @@
 			ul 		
 				- each element in elements
 					li(class=element.alternate)
-						a(href=element.imageUrl)
+						a(href='rotator/' + element.imageUrl)
 						.content
 							h2 #{element.headline}
 							p!= element.caption
-		img(src=elements[0].imageUrl, alt="- banner1") 
+		img(src='rotator/' + elements[0].imageUrl, alt="- banner1") 
 		.desc
 			a.collapse(href="#", class="collapse") Close Me! 
 			.block
