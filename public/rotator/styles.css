@@ -16,7 +16,7 @@ a{color:#fff}
 .block small{padding:0 0 0 20px;background:url("icon_calendar.gif") no-repeat 0 center;font-size:1em}
 .image_thumb{float:left;width:200px;position:absolute;background:transparent;}
 .image_thumb ul{margin:0 padding 0;list-style:none;}
-.image_thumb ul li{margin:0;padding:12px 10px;width:180px}
+.image_thumb ul li{background-color:#000;margin:0;padding:12px 10px;width:180px}
 .image_thumb ul li.even{opacity:.35}
 .image_thumb ul li.odd{opacity:.3}
 .image_thumb ul li.hover{background:#000;opacity:.5;cursor:pointer}
